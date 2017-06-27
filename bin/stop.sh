@@ -7,7 +7,7 @@ CONTAINER_NAME=local-mongo
 ##### Check if MongoDB is running #####
 
 if [ ! "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
-  echo "MongoDB must be running to stop it. Please run 'bin/start.sh' first..."
+  echo "MongoDB is not running..."
   exit 1
 fi
 

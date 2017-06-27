@@ -9,7 +9,7 @@ echo "project root folder $PROJECT_ROOT"
 
 ########### Config ############
 
-CONTAINER_NAME=thoth-mongo
+CONTAINER_NAME=local-mongo
 
 ##### Check if MongoDB is running #####
 
