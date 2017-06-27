@@ -9,19 +9,17 @@ echo "project root folder $PROJECT_ROOT"
 
 ########### Config ############
 
-CONTAINER_NAME=local-mongo
-DATA_FOLDER=$PROJECT_ROOT/data/db
+CONTAINER_NAME=thoth-mongo
 
 ##### Check if MongoDB is running #####
 
-if [ "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
-  echo "MongoDB is running already..."
+if [ ! "$(docker ps -q -f name=$CONTAINER_NAME)" ]; then
+  echo "MongoDB must be running to connect. Please run 'bin/start.sh' first..."
   exit 1
 fi
 
 ########### Run MongoDB ############
 
-docker run -dit \
-           --name $CONTAINER_NAME \
-           -v $DATA_FOLDER:/data/db \
-           mongo:3.5.9
+docker exec -it \
+            $CONTAINER_NAME \
+            mongo
